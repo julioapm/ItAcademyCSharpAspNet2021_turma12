@@ -4,9 +4,17 @@ namespace Laboratorio3cs
     public class ContaCorrente
     {
         private decimal saldo;
+        public ContaCorrente(decimal val)
+        {
+            saldo = val;
+        }
         public void Depositar(decimal val)
         {
             saldo = saldo + val;
+        }
+        public void Sacar(decimal val)
+        {
+            saldo = saldo - val;
         }
         public decimal Saldo
         {
@@ -15,5 +23,6 @@ namespace Laboratorio3cs
                 return saldo;
             }
         }
+        public string CpfTitular {get; set;}
     }
 }
