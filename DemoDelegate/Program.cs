@@ -22,6 +22,7 @@ namespace DemoDelegate
             r = refLambda(5,2);
             Console.WriteLine(r);
             AplicarCalculo((x,y)=>x-y,10,7);
+            Func<int,double> funcao = x => Math.Pow(x,2);
         }
         static int Somar(int a, int b)
         {
