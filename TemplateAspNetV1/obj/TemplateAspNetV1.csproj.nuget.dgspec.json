@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj": {}
+    "D:\\Git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj": {}
   },
   "projects": {
-    "D:\\git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj": {
+    "D:\\Git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj",
+        "projectUniqueName": "D:\\Git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj",
         "projectName": "TemplateAspNetV1",
-        "projectPath": "D:\\git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj",
+        "projectPath": "D:\\Git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\TemplateAspNetV1.csproj",
         "packagesPath": "C:\\Users\\julio\\.nuget\\packages\\",
-        "outputPath": "D:\\git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\obj\\",
+        "outputPath": "D:\\Git\\ItAcademyCSharpAspNet2021_turma12\\TemplateAspNetV1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
