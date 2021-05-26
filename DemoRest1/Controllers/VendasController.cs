@@ -27,7 +27,7 @@ namespace DemoRest1.Controllers
         [HttpPost]
         public ActionResult<Venda> PostComprar(Carrinho carrinho)
         {
-            _logger.LogInformation($"POST: {carrinho.CpfCliente}");
+            _logger.LogInformation($"POST: CpfCliente {carrinho.CpfCliente}");
             //Melhor fazer em outro objeto
             Venda venda = new Venda();
             venda.CpfCliente = carrinho.CpfCliente;
@@ -40,6 +40,36 @@ namespace DemoRest1.Controllers
             });
             venda.Itens = itensVenda;
             Venda novaVenda = _vendas.Adiciona(venda);
+            return CreatedAtAction(
+                nameof(GetPorId),
+                new {id = novaVenda.Id},
+                novaVenda
+            );
+        }
+
+        //GET /api/v1/vendas/{id}
+        [HttpGet("{id}")]
+        public ActionResult<Venda> GetPorId(Guid id)
+        {
+            _logger.LogInformation($"GET: Id {id}");
+            var venda = _vendas.ConsultaPorId(id);
+            if (venda == null)
+            {
+                return NotFound();
+            }
+            return venda;
+        }
+
+        //DELETE: /api/v1/vendas/{id}
+        [HttpDelete("{id}")]
+        public ActionResult<Venda> DeletePorId(Guid id)
+        {
+            _logger.LogInformation($"DELETE: Id {id}");
+            var venda = _vendas.Remove(id);
+            if (venda == null)
+            {
+                return NotFound();
+            }
             return venda;
         }
     }
