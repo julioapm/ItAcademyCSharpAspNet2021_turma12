@@ -28,6 +28,7 @@ namespace DemoRest1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<CatalogoProdutosService>();
+            services.AddSingleton<IVendasService,VendasMemoriaService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
