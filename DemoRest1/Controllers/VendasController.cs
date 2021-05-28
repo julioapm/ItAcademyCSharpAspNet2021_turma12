@@ -72,5 +72,32 @@ namespace DemoRest1.Controllers
             }
             return venda;
         }
+
+        //PUT: /api/v1/vendas/{id}
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, VendaRetificacao vendaret)
+        {
+            if (id != vendaret.Id)
+            {
+                return BadRequest();
+            }
+            if (_vendas.ConsultaPorId(id) == null)
+            {
+                return NotFound();
+            }
+            Venda venda = new Venda();
+            venda.Id = vendaret.Id;
+            venda.CpfCliente = vendaret.CpfCliente;
+            var itensVenda = vendaret.Itens.Select(item => {
+                var produto = _catalogo.ConsultaPorCodigo(item.CodigoProduto);
+                return new ItemVenda() {
+                    Produto = produto,
+                    Quantidade = item.Quantidade
+                };
+            });
+            venda.Itens = itensVenda;
+            _vendas.Altera(venda);
+            return NoContent();
+        }
     }
 }
