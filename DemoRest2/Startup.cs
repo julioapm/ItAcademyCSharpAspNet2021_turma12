@@ -65,6 +65,8 @@ namespace DemoRest2
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthentication();
 
             app.UseAuthorization();
