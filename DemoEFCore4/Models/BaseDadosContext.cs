@@ -17,7 +17,7 @@ namespace DemoEFCore4.Models
         {
         }
 
-        public virtual DbSet<Fornecedore> Fornecedores { get; set; }
+        public virtual DbSet<Fornecedor> Fornecedores { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,6 +26,7 @@ namespace DemoEFCore4.Models
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=ITA12_produtos;Integrated Security=True");
+                optionsBuilder.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
             }
         }
 
@@ -33,7 +34,7 @@ namespace DemoEFCore4.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Fornecedore>(entity =>
+            modelBuilder.Entity<Fornecedor>(entity =>
             {
                 entity.HasKey(e => e.Codigo);
 
@@ -55,6 +56,15 @@ namespace DemoEFCore4.Models
 
                 entity.Property(e => e.Codigo).HasColumnName("codigo");
 
+                entity.Property(e => e.Descricao)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("descricao");
+
+                entity.Property(e => e.EstaDisponivel).HasColumnName("estadisponivel");
+
+                entity.Property(e => e.PrecoUnitario).HasColumnName("precounitario");
+
                 entity.Property(e => e.CodigoFornecedor)
                     .IsRequired()
                     .HasMaxLength(3)
@@ -62,16 +72,7 @@ namespace DemoEFCore4.Models
                     .HasColumnName("codigo_fornecedor")
                     .IsFixedLength(true);
 
-                entity.Property(e => e.Descricao)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("descricao");
-
-                entity.Property(e => e.Estadisponivel).HasColumnName("estadisponivel");
-
-                entity.Property(e => e.Precounitario).HasColumnName("precounitario");
-
-                entity.HasOne(d => d.CodigoFornecedorNavigation)
+                entity.HasOne(d => d.Fornecedor)
                     .WithMany(p => p.Produtos)
                     .HasForeignKey(d => d.CodigoFornecedor)
                     .OnDelete(DeleteBehavior.ClientSetNull)

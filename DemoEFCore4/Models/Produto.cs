@@ -9,10 +9,10 @@ namespace DemoEFCore4.Models
     {
         public long Codigo { get; set; }
         public string Descricao { get; set; }
-        public float Precounitario { get; set; }
-        public bool Estadisponivel { get; set; }
+        public float PrecoUnitario { get; set; }
+        public bool EstaDisponivel { get; set; }
         public string CodigoFornecedor { get; set; }
 
-        public virtual Fornecedore CodigoFornecedorNavigation { get; set; }
+        public virtual Fornecedor Fornecedor { get; set; }
     }
 }

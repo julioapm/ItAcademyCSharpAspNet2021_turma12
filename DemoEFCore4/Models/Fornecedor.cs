@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace DemoEFCore4.Models
 {
-    public partial class Fornecedore
+    public partial class Fornecedor
     {
-        public Fornecedore()
+        public Fornecedor()
         {
             Produtos = new HashSet<Produto>();
         }
