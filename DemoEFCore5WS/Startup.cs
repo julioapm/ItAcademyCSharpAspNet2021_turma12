@@ -32,6 +32,7 @@ namespace DemoEFCore5WS
                 {
                     var stringConexao = Configuration.GetConnectionString("Blogs");
                     options.UseSqlServer(stringConexao);
+                    options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
                 }
             );
             services.AddControllers();
