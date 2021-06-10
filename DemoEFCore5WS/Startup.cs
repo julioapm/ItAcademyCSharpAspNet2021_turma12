@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using DemoEFCore5WS.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoEFCore5WS
 {
@@ -26,7 +28,12 @@ namespace DemoEFCore5WS
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<BDContext>(options =>
+                {
+                    var stringConexao = Configuration.GetConnectionString("Blogs");
+                    options.UseSqlServer(stringConexao);
+                }
+            );
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
