@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using DemoEFCore5WS.Models;
 using Microsoft.EntityFrameworkCore;
+using DemoEFCore5WS.Data;
 
 namespace DemoEFCore5WS
 {
@@ -35,6 +36,7 @@ namespace DemoEFCore5WS
                     options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
                 }
             );
+            services.AddScoped<BlogsRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
