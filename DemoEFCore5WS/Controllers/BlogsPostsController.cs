@@ -25,9 +25,9 @@ namespace DemoEFCore5WS.Controllers
 
         [HttpGet("blog/{id}")]
         //GET blogsposts/blog/{id}
-        [ProducesResponseType(200, Type = typeof(Blog))]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Blog))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Blog>> GetPorId(int id)
         {
             try

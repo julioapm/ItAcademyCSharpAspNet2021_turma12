@@ -17,8 +17,7 @@ namespace DemoEFCore5WS.Data
         {
             var blog = await _contexto.Blogs
                 .Include(b => b.Posts)
-                .Where(b => b.Id == id)
-                .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync(b => b.Id == id);
             return blog;
         }
     }
